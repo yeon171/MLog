@@ -231,13 +231,15 @@ export function Community({ user, accessToken }: CommunityProps) {
         <Switch checked={showSpoilers} onCheckedChange={setShowSpoilers} />
       </div>
 
-      <Tabs value={activeTab} onValueChange={(v: string) => setActiveTab(v as any)}>
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="musical">작품 후기</TabsTrigger>
-          <TabsTrigger value="actor">배우 후기</TabsTrigger>
-          <TabsTrigger value="goods">굿즈 후기</TabsTrigger>
-          <TabsTrigger value="qna">Q&A</TabsTrigger>
-        </TabsList>
+      <Tabs value={activeTab} onValueChange={(v: string) => setActiveTab(v as any)} className="w-full">
+        <div className="flex justify-center">
+          <TabsList>
+            <TabsTrigger value="musical">작품 후기</TabsTrigger>
+            <TabsTrigger value="actor">배우 후기</TabsTrigger>
+            <TabsTrigger value="goods">굿즈 후기</TabsTrigger>
+            <TabsTrigger value="qna">Q&A</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="musical" className="mt-6">
           {filteredReviews.length === 0 ? (

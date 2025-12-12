@@ -216,11 +216,13 @@ export function Marketplace({ user, accessToken }: MarketplaceProps) {
         )}
       </div>
 
-      <Tabs defaultValue="market" className="mb-6">
-        <TabsList>
-          <TabsTrigger value="market">중고 마켓</TabsTrigger>
-          <TabsTrigger value="prices">시세 정보</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="market" className="mb-6 w-full">
+        <div className="flex justify-center">
+          <TabsList>
+            <TabsTrigger value="market">중고 마켓</TabsTrigger>
+            <TabsTrigger value="prices">시세 정보</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="market" className="mt-6">
           {/* Search */}

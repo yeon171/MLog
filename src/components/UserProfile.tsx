@@ -212,12 +212,14 @@ export function UserProfile({ user, accessToken, onSignOut }: UserProfileProps) 
       </div>
 
       {/* Tabs */}
-      <Tabs defaultValue="watched">
-        <TabsList>
-          <TabsTrigger value="watched">관람 기록</TabsTrigger>
-          <TabsTrigger value="stats">통계</TabsTrigger>
-          <TabsTrigger value="favorites">즐겨찾기</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="watched" className="w-full">
+        <div className="flex justify-center">
+          <TabsList>
+            <TabsTrigger value="watched">관람 기록</TabsTrigger>
+            <TabsTrigger value="stats">통계</TabsTrigger>
+            <TabsTrigger value="favorites">즐겨찾기</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="watched" className="mt-6">
           <div className="flex items-center justify-between mb-6">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { projectId, publicAnonKey } from './utils/supabase/info';
+import { Card } from './components/ui/card';
 import { Toaster, toast } from 'sonner';
 import { Home } from './components/Home';
 import { MusicalArchive } from './components/MusicalArchive';
@@ -14,7 +15,7 @@ import { VenueInfo } from './components/VenueInfo';
 import { NewsColumns } from './components/NewsColumns';
 import { UserProfile } from './components/UserProfile';
 import { AuthModal } from './components/AuthModal';
-import { Sidebar } from './components/Sidebar';
+import { Header } from './components/Header';
 import { 
   Home as HomeIcon, 
   Film, 
@@ -58,7 +59,6 @@ export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [showAuthModal, setShowAuthModal] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   useEffect(() => {
     checkSession();
@@ -187,20 +187,23 @@ export default function App() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
-      <Sidebar
+    <div className="min-h-screen bg-slate-50">
+      <Header
         navigationItems={navigationItems}
         currentSection={currentSection}
         onNavigate={setCurrentSection}
-        collapsed={sidebarCollapsed}
-        onToggleCollapse={() => setSidebarCollapsed(!sidebarCollapsed)}
         user={user}
         onAuthClick={() => setShowAuthModal(true)}
+        onSignOut={handleSignOut}
       />
-      
-      <main className="flex-1 overflow-auto">
-        {renderContent()}
-      </main>
+      <div className="relative">
+        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-indigo-100 to-transparent" />
+        <main className="relative p-4 sm:p-6 lg:p-8">
+          <Card className="overflow-hidden shadow-sm">
+            {renderContent()}
+          </Card>
+        </main>
+      </div>
 
       <AuthModal
         isOpen={showAuthModal}

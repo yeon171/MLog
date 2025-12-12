@@ -134,13 +134,15 @@ export function VenueInfo({ user }: VenueInfoProps) {
                 <Badge variant="secondary">{selectedVenue.capacity}</Badge>
               </CardHeader>
               <CardContent>
-                <Tabs defaultValue="info">
-                  <TabsList className="grid w-full grid-cols-4">
-                    <TabsTrigger value="info">기본 정보</TabsTrigger>
-                    <TabsTrigger value="transit">교통</TabsTrigger>
-                    <TabsTrigger value="food">주변 맛집</TabsTrigger>
-                    <TabsTrigger value="tips">좌석 팁</TabsTrigger>
-                  </TabsList>
+                <Tabs defaultValue="info" className="w-full">
+                  <div className="flex justify-center">
+                    <TabsList>
+                      <TabsTrigger value="info">기본 정보</TabsTrigger>
+                      <TabsTrigger value="transit">교통</TabsTrigger>
+                      <TabsTrigger value="food">주변 맛집</TabsTrigger>
+                      <TabsTrigger value="tips">좌석 팁</TabsTrigger>
+                    </TabsList>
+                  </div>
 
                   <TabsContent value="info" className="space-y-6 mt-6">
                     <div>

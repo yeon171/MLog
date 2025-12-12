@@ -300,13 +300,15 @@ export function MusicalArchive({ user, accessToken }: MusicalArchiveProps) {
                 <DialogTitle className="text-2xl">{selectedMusical.title}</DialogTitle>
               </DialogHeader>
               
-              <Tabs defaultValue="info" className="w-full">
-                <TabsList className="grid w-full grid-cols-4">
-                  <TabsTrigger value="info">기본 정보</TabsTrigger>
-                  <TabsTrigger value="casting">캐스팅</TabsTrigger>
-                  <TabsTrigger value="numbers">넘버</TabsTrigger>
-                  <TabsTrigger value="media">미디어</TabsTrigger>
-                </TabsList>
+              <Tabs defaultValue="info" className="w-full ">
+                <div className="flex justify-center">
+                  <TabsList>
+                    <TabsTrigger value="info">기본 정보</TabsTrigger>
+                    <TabsTrigger value="casting">캐스팅</TabsTrigger>
+                    <TabsTrigger value="numbers">넘버</TabsTrigger>
+                    <TabsTrigger value="media">미디어</TabsTrigger>
+                  </TabsList>
+                </div>
                 
                 <TabsContent value="info" className="space-y-4">
                   {selectedMusical.genre && (

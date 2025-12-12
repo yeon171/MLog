@@ -97,14 +97,16 @@ export function NewsColumns({ user }: NewsColumnsProps) {
         <p className="text-gray-600">최신 뮤지컬 소식과 칼럼을 확인하세요</p>
       </div>
 
-      <Tabs defaultValue="all" className="mb-6">
-        <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="all">전체</TabsTrigger>
-          <TabsTrigger value="ticket">티켓 오픈</TabsTrigger>
-          <TabsTrigger value="casting">캐스팅</TabsTrigger>
-          <TabsTrigger value="review">리뷰</TabsTrigger>
-          <TabsTrigger value="interview">인터뷰</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="all" className="mb-6 w-full">
+        <div className="flex justify-center">
+          <TabsList>
+            <TabsTrigger value="all">전체</TabsTrigger>
+            <TabsTrigger value="ticket">티켓 오픈</TabsTrigger>
+            <TabsTrigger value="casting">캐스팅</TabsTrigger>
+            <TabsTrigger value="review">리뷰</TabsTrigger>
+            <TabsTrigger value="interview">인터뷰</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="all" className="mt-6">
           <div className="space-y-4">

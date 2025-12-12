@@ -263,11 +263,13 @@ export function SeatView({ user, accessToken }: SeatViewProps) {
         )}
       </div>
 
-      <Tabs defaultValue="venues" className="mb-6">
-        <TabsList>
-          <TabsTrigger value="venues">공연장별</TabsTrigger>
-          <TabsTrigger value="reviews">전체 후기</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="venues" className="mb-6 w-full">
+        <div className="flex justify-center">
+          <TabsList>
+            <TabsTrigger value="venues">공연장별</TabsTrigger>
+            <TabsTrigger value="reviews">전체 후기</TabsTrigger>
+          </TabsList>
+        </div>
 
         <TabsContent value="venues" className="mt-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
