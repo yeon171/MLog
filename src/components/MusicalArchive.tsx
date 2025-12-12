@@ -245,47 +245,31 @@ export function MusicalArchive({ user, accessToken }: MusicalArchiveProps) {
           <p className="text-gray-500">첫 번째 뮤지컬을 추가해보세요!</p>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {filteredMusicals.map((musical) => (
             <Card 
               key={musical.id}
-              className="cursor-pointer hover:shadow-lg transition-shadow"
+              className="cursor-pointer group overflow-hidden"
               onClick={() => setSelectedMusical(musical)}
             >
-              <div className="relative overflow-hidden aspect-[2/3] bg-gradient-to-br from-indigo-100 to-blue-100">
+              <div className="relative aspect-[2/3] bg-gray-100">
                 {musical.poster ? (
                   <ImageWithFallback
                     src={musical.poster}
                     alt={musical.title}
-                    className="object-cover w-full h-full"
+                    className="object-cover w-full h-full transition-transform group-hover:scale-105"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
                     <Film className="w-16 h-16 text-indigo-300" />
                   </div>
                 )}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                  <h3 className="font-bold truncate">{musical.title}</h3>
+                  {musical.genre && <p className="text-xs text-white/80 truncate">{musical.genre}</p>}
+                </div>
               </div>
-              <CardHeader>
-                <CardTitle>{musical.title}</CardTitle>
-                {musical.genre && (
-                  <div className="flex gap-2 mt-2">
-                    <Badge variant="secondary">{musical.genre}</Badge>
-                  </div>
-                )}
-              </CardHeader>
-              <CardContent>
-                {musical.synopsis && (
-                  <p className="text-sm text-gray-600 line-clamp-3 mb-3">
-                    {musical.synopsis}
-                  </p>
-                )}
-                {musical.theater && (
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
-                    <Calendar className="w-4 h-4" />
-                    <span>{musical.theater}</span>
-                  </div>
-                )}
-              </CardContent>
             </Card>
           ))}
         </div>

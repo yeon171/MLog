@@ -246,21 +246,21 @@ export function ActorDatabase({ user, accessToken }: ActorDatabaseProps) {
           <p className="text-gray-500">첫 번째 배우를 추가해보세요!</p>
         </Card>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
           {filteredActors.map((actor) => (
             <Card 
               key={actor.id}
-              className="cursor-pointer hover:shadow-lg transition-shadow"
+              className="cursor-pointer group overflow-hidden text-center"
+              onClick={() => setSelectedActor(actor)}
             >
               <div 
-                className="aspect-square bg-gradient-to-br from-blue-100 to-purple-100 relative overflow-hidden"
-                onClick={() => setSelectedActor(actor)}
+                className="aspect-square bg-gray-100 relative overflow-hidden"
               >
                 {actor.photo ? (
                   <ImageWithFallback
                     src={actor.photo}
                     alt={actor.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform group-hover:scale-105"
                   />
                 ) : (
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -268,43 +268,19 @@ export function ActorDatabase({ user, accessToken }: ActorDatabaseProps) {
                   </div>
                 )}
               </div>
-              <CardHeader>
-                <div className="flex items-center justify-between">
-                  <CardTitle onClick={() => setSelectedActor(actor)}>{actor.name}</CardTitle>
-                  {user && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        toggleFollow(actor.id);
-                      }}
-                    className="p-2 rounded-full transition-colors hover:bg-gray-100"
-                    >
-                      {following.has(actor.id) ? (
-                      <Bell className="w-5 h-5 text-indigo-600" />
-                      ) : (
-                        <BellOff className="w-5 h-5 text-gray-400" />
-                      )}
-                    </button>
-                  )}
-                </div>
+              <CardContent className="p-4">
+                <h3 className="font-bold truncate">{actor.name}</h3>
                 {actor.agency && (
-                  <Badge variant="secondary" className="mt-2">{actor.agency}</Badge>
+                  <p className="text-xs text-gray-500 truncate">{actor.agency}</p>
                 )}
-              </CardHeader>
-              <CardContent onClick={() => setSelectedActor(actor)}>
-                {actor.bio && (
-                  <p className="text-sm text-gray-600 line-clamp-2">
-                    {actor.bio}
-                  </p>
-                )}
-                <div className="flex gap-2 mt-3">
+                <div className="flex justify-center gap-2 mt-3">
                   {actor.instagram && (
                     <a
                       href={`https://instagram.com/${actor.instagram.replace('@', '')}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1 hover:bg-gray-100 rounded"
+                      className="p-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-full"
                     >
                       <Instagram className="w-4 h-4 text-gray-600" />
                     </a>
@@ -315,10 +291,23 @@ export function ActorDatabase({ user, accessToken }: ActorDatabaseProps) {
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1 hover:bg-gray-100 rounded"
+                      className="p-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-100 rounded-full"
                     >
                       <Twitter className="w-4 h-4 text-gray-600" />
                     </a>
+                  )}
+                  {user && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleFollow(actor.id);
+                      }}
+                      className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-full"
+                    >
+                      {following.has(actor.id) 
+                        ? <Bell className="w-4 h-4 text-indigo-600" /> 
+                        : <BellOff className="w-4 h-4" />}
+                    </button>
                   )}
                 </div>
               </CardContent>

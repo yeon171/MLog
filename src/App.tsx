@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { projectId, publicAnonKey } from './utils/supabase/info';
-import { Card } from './components/ui/card';
 import { Toaster, toast } from 'sonner';
 import { Home } from './components/Home';
 import { MusicalArchive } from './components/MusicalArchive';
@@ -143,17 +142,35 @@ export default function App() {
     toast.success('로그아웃되었습니다.');
   };
 
-  const navigationItems = [
+  const navigationItems: (NavigationItem | SubNavigationItem)[] = [
     { id: 'home' as NavigationSection, label: '홈', icon: HomeIcon },
-    { id: 'musicals' as NavigationSection, label: '뮤지컬 아카이브', icon: Film },
-    { id: 'actors' as NavigationSection, label: '배우 DB', icon: Users },
-    { id: 'schedule' as NavigationSection, label: '공연 일정', icon: Calendar },
-    { id: 'seatview' as NavigationSection, label: '좌석뷰', icon: Eye },
-    { id: 'community' as NavigationSection, label: '커뮤니티', icon: MessageSquare },
-    { id: 'marketplace' as NavigationSection, label: '굿즈 마켓', icon: ShoppingBag },
-    { id: 'recommendations' as NavigationSection, label: '추천', icon: Sparkles },
-    { id: 'venues' as NavigationSection, label: '공연장 정보', icon: MapPin },
-    { id: 'news' as NavigationSection, label: '뉴스', icon: Newspaper },
+    {
+      id: 'content',
+      label: '콘텐츠',
+      children: [
+        { id: 'musicals', label: '뮤지컬 아카이브', icon: Film },
+        { id: 'actors', label: '배우 DB', icon: Users },
+        { id: 'venues', label: '공연장 정보', icon: MapPin },
+        { id: 'news', label: '뉴스', icon: Newspaper },
+      ],
+    },
+    {
+      id: 'planner',
+      label: '플래너',
+      children: [
+        { id: 'schedule', label: '공연 일정', icon: Calendar },
+        { id: 'seatview', label: '좌석뷰', icon: Eye },
+        { id: 'recommendations', label: '추천', icon: Sparkles },
+      ],
+    },
+    {
+      id: 'community_group',
+      label: '커뮤니티',
+      children: [
+        { id: 'community', label: '커뮤니티', icon: MessageSquare },
+        { id: 'marketplace', label: '굿즈 마켓', icon: ShoppingBag },
+      ],
+    },
     { id: 'profile' as NavigationSection, label: '내 프로필', icon: User },
   ];
 
@@ -196,14 +213,9 @@ export default function App() {
         onAuthClick={() => setShowAuthModal(true)}
         onSignOut={handleSignOut}
       />
-      <div className="relative">
-        <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-indigo-100 to-transparent" />
-        <main className="relative p-4 sm:p-6 lg:p-8">
-          <Card className="overflow-hidden shadow-sm">
-            {renderContent()}
-          </Card>
-        </main>
-      </div>
+      <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {renderContent()}
+      </main>
 
       <AuthModal
         isOpen={showAuthModal}

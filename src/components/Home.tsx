@@ -1,7 +1,8 @@
 import React from 'react';
 import { User, NavigationSection } from '../App';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Film, Users, Calendar, Eye, MessageSquare, ShoppingBag, Sparkles, MapPin, Newspaper, TrendingUp } from 'lucide-react';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
+import { Button } from './ui/button';
+import { Film, Users, Calendar, Eye, MessageSquare, ShoppingBag, Newspaper, TrendingUp, Star, ThumbsUp, Sparkles, Ticket } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
 
 interface HomeProps {
@@ -10,108 +11,134 @@ interface HomeProps {
 }
 
 export function Home({ user, onNavigate }: HomeProps) {
-  const quickLinks = [
-    {
-      id: 'musicals' as NavigationSection,
-      title: '뮤지컬 아카이브',
-      description: '작품 정보, 캐스팅, OST를 한번에',
-      icon: Film,
-    },
-    {
-      id: 'actors' as NavigationSection,
-      title: '배우 DB',
-      description: '프로필, 필모그래피, 출연 일정 확인',
-      icon: Users,
-    },
-    {
-      id: 'schedule' as NavigationSection,
-      title: '공연 일정',
-      description: '달력으로 보는 전체 공연 스케줄',
-      icon: Calendar,
-    },
-    {
-      id: 'seatview' as NavigationSection,
-      title: '좌석 시야',
-      description: '공연장별 실제 시야 정보와 후기',
-      icon: Eye,
-    },
-    {
-      id: 'community' as NavigationSection,
-      title: '커뮤니티',
-      description: '작품/배우 후기, Q&A 등 소통 공간',
-      icon: MessageSquare,
-    },
-    {
-      id: 'marketplace' as NavigationSection,
-      title: '굿즈 마켓',
-      description: '중고 거래 및 상품 시세 정보',
-      icon: ShoppingBag,
-    },
-    {
-      id: 'news' as NavigationSection,
-      title: '뉴스 & 칼럼',
-      description: '최신 티켓 오픈, 캐스팅 소식',
-      icon: Newspaper,
-    },
+  const hotMusicals = [
+    { id: '1', title: '레미제라블', poster: 'https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?q=80&w=1080' },
+    { id: '2', title: '위키드', poster: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?q=80&w=1080' },
+    { id: '3', title: '시카고', poster: 'https://images.unsplash.com/photo-1509306250284-4c75c1b83917?q=80&w=1080' },
+    { id: '4', title: '오페라의 유령', poster: 'https://images.unsplash.com/photo-1596884762326-a4fcc1254a5f?q=80&w=1080' },
+  ];
+
+  const latestReviews = [
+    { id: '1', title: '시카고, 재즈의 향연과 날카로운 사회 비평', user: '김뮤지컬', likes: 15 },
+    { id: '2', title: '팬텀 주역 배우들의 무대 위 열정', user: '공연리뷰', likes: 22 },
+    { id: '3', title: '맘마미아! 역시 믿고 보는 뮤지컬', user: 'ABBA팬', likes: 8 },
+  ];
+
+  const recommendations = [
+    { id: '1', title: '헤드윅', reason: '록 음악과 감동적인 스토리를 좋아하신다면', poster: 'https://images.unsplash.com/photo-1516280440614-37639448064d?q=80&w=1080' },
+    { id: '2', title: '노트르담 드 파리', reason: '웅장한 음악과 비극적인 사랑 이야기를 선호하신다면', poster: 'https://images.unsplash.com/photo-1558008258-3256797b43f3?q=80&w=1080' },
   ];
 
   return (
-    <div className="p-8">
+    <div className="space-y-12">
       {/* Hero Section */}
-      <div className="relative rounded-2xl overflow-hidden mb-8 h-96">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-blue-50 to-pink-50" />
-        <div className="relative h-full flex flex-col justify-center items-center text-center p-8">
-          <h1 className="mb-4 text-gray-800">
-            <span className="text-indigo-600">Mlog</span>에서 시작하는
-            <br />
-            나만의 뮤지컬 라이프
-          </h1>
-          <p className="text-xl mb-6 text-gray-600 max-w-2xl">
-            작품 정보부터 공연장 시야, 커뮤니티까지. 뮤지컬의 모든 것을 한 곳에서 경험하고 기록하세요.
-          </p>
-          {user ? (
-            <p className="text-gray-500">
-              환영합니다, {user.name || user.email}님! 👋
-            </p>
-          ) : (
-            <p className="text-gray-500">
-              로그인하고 나만의 뮤지컬 기록을 시작해보세요
-            </p>
-          )}
+      <div className="relative rounded-xl overflow-hidden h-60 md:h-80 flex items-center justify-center">
+        <ImageWithFallback 
+          src="https://images.unsplash.com/photo-1503095396549-807759245b35?q=80&w=1920" 
+          alt="Hero background" 
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+        <div className="relative text-center text-white p-8">
+          <h1 className="text-white mb-4">나만의 뮤지컬 라이프, Mlog</h1>
+          <p className="text-lg text-white/90">작품 정보부터 커뮤니티까지, 모든 것을 한 곳에서</p>
         </div>
       </div>
 
-      {/* Features Grid */}
-      <div className="mb-12">
-        <div className="flex items-center gap-2 mb-6">
+      {/* Weekly Ranking */}
+      <section>
+        <div className="flex items-center justify-between mb-6">
           <TrendingUp className="w-6 h-6 text-indigo-600" />
-          <h2>주요 서비스</h2>
+          <h2>주간 랭킹</h2>
+          <Button variant="ghost" onClick={() => onNavigate('musicals')}>더보기 &gt;</Button>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {quickLinks.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Card
-                key={item.id}
-                onClick={() => onNavigate(item.id)}
-                className="cursor-pointer group hover:border-indigo-400 hover:shadow-lg transition-all duration-300"
-              >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {hotMusicals.map((musical, index) => (
+            <div key={musical.id} className="group relative cursor-pointer" onClick={() => onNavigate('musicals')}>
+              <ImageWithFallback src={musical.poster} alt={musical.title} className="w-full aspect-[2/3] object-cover rounded-lg shadow-md transition-transform group-hover:scale-105" />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 rounded-b-lg">
+                <p className="text-white font-bold text-lg truncate">{musical.title}</p>
+              </div>
+              <div className="absolute -left-2 -top-2 w-10 h-10 bg-indigo-600 text-white flex items-center justify-center rounded-full text-xl font-bold shadow-lg">
+                {index + 1}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Recommendations & Latest Reviews */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <Sparkles className="w-6 h-6 text-indigo-600" />
+            <h2>Mlog 추천</h2>
+            <Button variant="ghost" onClick={() => onNavigate('recommendations')}>더보기 &gt;</Button>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {recommendations.map(rec => (
+              <Card key={rec.id} className="overflow-hidden group cursor-pointer" onClick={() => onNavigate('recommendations')}>
+                <ImageWithFallback src={rec.poster} alt={rec.title} className="w-full h-40 object-cover transition-transform group-hover:scale-105" />
                 <CardHeader>
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-indigo-50 flex items-center justify-center flex-shrink-0 group-hover:bg-indigo-100 transition-colors">
-                      <Icon className="w-6 h-6 text-indigo-600" />
-                    </div>
-                    <div>
-                      <CardTitle className="mb-1">{item.title}</CardTitle>
-                      <p className="text-sm text-gray-600">{item.description}</p>
-                    </div>
-                  </div>
+                  <CardTitle>{rec.title}</CardTitle>
+                  <CardDescription>{rec.reason}</CardDescription>
                 </CardHeader>
               </Card>
-            );
-          })}
-        </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <div className="flex items-center justify-between mb-6">
+            <MessageSquare className="w-6 h-6 text-indigo-600" />
+            <h2>최신 후기</h2>
+            <Button variant="ghost" onClick={() => onNavigate('community')}>더보기 &gt;</Button>
+          </div>
+          <div className="space-y-3">
+            {latestReviews.map(review => (
+              <Card key={review.id} className="p-4 hover:shadow-md transition-shadow cursor-pointer" onClick={() => onNavigate('community')}>
+                <p className="font-medium text-gray-800 truncate mb-2">{review.title}</p>
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <span>by {review.user}</span>
+                  <div className="flex items-center gap-1">
+                    <ThumbsUp className="w-4 h-4" />
+                    <span>{review.likes}</span>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </section>
       </div>
+
+      {/* Ticket Open News */}
+      <section>
+        <div className="flex items-center justify-between mb-6">
+          <Ticket className="w-6 h-6 text-indigo-600" />
+          <h2>티켓 오픈 소식</h2>
+          <Button variant="ghost" onClick={() => onNavigate('news')}>더보기 &gt;</Button>
+        </div>
+        <Card>
+          <CardContent className="p-0">
+            <div className="divide-y">
+              <div className="p-4 flex items-center justify-between hover:bg-gray-50">
+                <div>
+                  <p className="font-bold">레미제라블</p>
+                  <p className="text-sm text-gray-500">2024.08.15 (목) 14:00</p>
+                </div>
+                <Button>예매하기</Button>
+              </div>
+              <div className="p-4 flex items-center justify-between hover:bg-gray-50">
+                <div>
+                  <p className="font-bold">위키드</p>
+                  <p className="text-sm text-gray-500">2024.08.20 (화) 11:00</p>
+                </div>
+                <Button>예매하기</Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   );
 }
