@@ -30,7 +30,7 @@
 - 좋아하는 배우의 출연작과 스케줄을 직접 정리해야 함
 - 배우 데뷔일, 공연 n주년과 같은 기념일을 놓치기 쉬움
 
-**Musicalog**는  
+**MLog**는  
 공연 · 배우 · 개인 관심 정보를 하나의 서비스로 통합하는 것을 목표로 합니다.
 
 ---
@@ -106,7 +106,7 @@ As a musical fan, I often found it inconvenient that:
 - I had to manually organize the schedules and filmography of my favorite actors.
 - It was easy to miss important anniversaries like an actor's debut or a show's milestone.
 
-**Musicalog** aims to solve these issues by integrating performance, actor, and personal interest data into a single, unified service.
+**MLog** aims to solve these issues by integrating performance, actor, and personal interest data into a single, unified service.
 
 ---
 
