@@ -41,8 +41,6 @@
 - 사용자 인증 (Supabase Auth)
 - 뮤지컬 공연 정보 조회
 - 배우 정보 조회
-
-#### 예정 기능
 - 관심 배우 찜하기
 - 찜한 배우의 공연 일정 캘린더 표시
 - 배우 데뷔일 / 공연 n주년 자동 계산
@@ -118,8 +116,6 @@ As a musical fan, I often found it inconvenient that:
 - User Authentication (Supabase Auth)
 - View Musical Performance Information
 - View Actor Information
-
-#### Planned Features
 - "Favorite" an actor
 - Display favorited actors' performance schedules on a calendar
 - Automatically calculate actor debut dates and performance anniversaries
