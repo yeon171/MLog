@@ -44,7 +44,7 @@
 .forgotPassword {
   font-size: 0.875rem; /* text-sm */
   font-weight: 500; /* font-medium */
-  color: hsl(var(--primary));
+  color: hsl(var(--muted-foreground));
 }
 .forgotPassword:hover {
   text-decoration: underline;
@@ -113,7 +113,7 @@
 
 .signupLink {
   font-weight: 500; /* font-medium */
-  color: hsl(var(--primary));
+  color: hsl(var(--muted-foreground));
 }
 .signupLink:hover {
   text-decoration: underline;

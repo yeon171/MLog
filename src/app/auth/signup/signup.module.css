@@ -55,7 +55,7 @@
 
 .loginLink {
   font-weight: 500;
-  color: hsl(var(--primary));
+  color: hsl(var(--muted-foreground));
 }
 .loginLink:hover {
   text-decoration: underline;
