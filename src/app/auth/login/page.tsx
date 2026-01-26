@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation' // useRouter 임포트
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,10 +12,12 @@ import { useAuth } from '@/context/AuthContext'
 
 export default function LoginPage() {
   const { login } = useAuth()
+  const router = useRouter() // useRouter 훅 사용
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
+  const [clickCount, setClickCount] = useState(0) // 클릭 횟수 상태
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,10 +51,22 @@ export default function LoginPage() {
     }
   }
 
+  // 제목 클릭 핸들러
+  const handleTitleClick = () => {
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
+    if (newCount >= 5) {
+      router.push('/admin/login');
+    }
+  };
+
   return (
     <Card className={styles.card}>
       <CardHeader className={styles.headerSpace}>
-        <CardTitle className={styles.title}>로그인</CardTitle>
+        {/* CardTitle에 onClick 이벤트 추가 */}
+        <CardTitle className={styles.title} onClick={handleTitleClick}>
+          로그인
+        </CardTitle>
         <CardDescription className={styles.description}>
           이메일과 비밀번호를 입력하여 로그인하세요
         </CardDescription>
