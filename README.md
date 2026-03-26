@@ -1,157 +1,111 @@
-# MLog
+# MLog 🎭
+**A web application for musical tracking and personalized recommendations**
 
-<p>
-  <a href="#한국어">한국어</a> |
-  <a href="#english">English</a>
-</p>
-
----
-
-## 한국어
-
-### 프로젝트 소개
-뮤지컬 공연과 배우 정보를 통합하고,  
-관심 배우의 공연 일정과 기념일을 캘린더로 관리할 수 있는  
-뮤지컬 팬을 위한 웹서비스입니다.
+MLog allows users to log musicals they've watched and receive recommendations based on their tastes.  
+Built with **Next.js + TypeScript**, it provides a web-based interface for personal musical records and AI-powered suggestions.
 
 ---
 
-### 프로젝트 개요
-- **프로젝트 유형**: 개인 프로젝트
-- **개발 목적**: 흩어져 있는 뮤지컬 정보와 배우 스케줄을 한 곳에서 관리
-- **진행 상태**: 기획 및 초기 개발 단계
+## 🌟 Features
+
+1. **Track Your Musical Records**  
+   - Add, view, and delete watched musicals  
+   - Rate and review performances  
+
+2. **Musical List**  
+   - JSON-based musical database  
+   - Detailed pages for each musical  
+
+3. **AI Recommendations**  
+   - Suggests musicals based on your past logs  
+   - Placeholder AI logic; can integrate with OpenAI later  
+
+4. **Fullstack Setup**  
+   - Next.js App Router + API Routes  
+   - TypeScript + JSON data  
+   - Component-based UI  
 
 ---
 
-### 기획 배경
-뮤지컬 팬으로서 다음과 같은 불편함을 느꼈습니다.
+## ⚡ Tech Stack
 
-- 공연 정보와 배우 정보가 여러 사이트에 분산됨
-- 좋아하는 배우의 출연작과 스케줄을 직접 정리해야 함
-- 배우 데뷔일, 공연 n주년과 같은 기념일을 놓치기 쉬움
-
-**MLog**는  
-공연 · 배우 · 개인 관심 정보를 하나의 서비스로 통합하는 것을 목표로 합니다.
+- **Frontend / Backend:** Next.js (App Router)  
+- **Languages:** TypeScript, JavaScript  
+- **Styling:** CSS / Tailwind (optional)  
+- **Data:** JSON-based temporary DB  
+- **Recommendation Algorithm:** AI (placeholder, can use OpenAI later)  
 
 ---
 
-### 핵심 기능
+## 🚀 Installation & Running
 
-#### 구현 / 개발 중
-- 사용자 인증 (Supabase Auth)
-- 뮤지컬 공연 정보 조회
-- 배우 정보 조회
-- 관심 배우 찜하기
-- 찜한 배우의 공연 일정 캘린더 표시
-- 배우 데뷔일 / 공연 n주년 자동 계산
-- 개인 맞춤 알림 기능
-
----
-
-### 데이터베이스 설계
-- **users**: 사용자 정보
-- **actors**: 배우 정보
-- **musicals**: 공연 정보
-- **schedules**: 공연 일정
-- **favorites**: 사용자-배우 찜 관계
-- **calendars**: 개인 캘린더 이벤트
-
----
-
-### 기술 스택
-
-**Frontend**
-- Next.js
-- TypeScript
-- Tailwind CSS
-
-**Backend**
-- Supabase (PostgreSQL)
-- Supabase Auth
-- Java / Spring Boot (예정)
-
-**Deployment**
-- Vercel (예정)
-
----
-
-### 실행 방법
+1. Clone the repo:  
 ```bash
+git clone <repo-url>
+cd MLog
+
+2. Install dependencies:
 npm install
+
+3. Run development server:
 npm run dev
-```
 
----
----
-
-## English
-
-### Project Introduction
-A web service for musical fans that integrates musical and actor information,  
-allowing users to track favorite actors, performance schedules,  
-and important anniversaries through a personalized calendar.
+4. Open in browser:
+http://localhost:3000
 
 ---
 
-### Project Overview
-- **Project Type**: Personal Project
-- **Purpose**: To centralize scattered musical information and actor schedules
-- **Status**: Planning and initial development phase
+# MLog 🎭
+**뮤지컬 기록 및 추천 웹 애플리케이션**
+
+MLog는 사용자가 본 뮤지컬을 기록하고, 취향에 맞는 뮤지컬을 추천받을 수 있는 웹앱입니다.  
+Next.js + TypeScript로 제작되었으며, 개인 기록 관리와 AI 추천 기능을 제공합니다.
 
 ---
 
-### Motivation
-As a musical fan, I often found it inconvenient that:
-- Performance and actor information is spread across multiple websites.
-- I had to manually organize the schedules and filmography of my favorite actors.
-- It was easy to miss important anniversaries like an actor's debut or a show's milestone.
+## 🌟 주요 기능
 
-**MLog** aims to solve these issues by integrating performance, actor, and personal interest data into a single, unified service.
+1. **내 뮤지컬 기록 관리**  
+   - 본 뮤지컬 기록 추가 / 조회 / 삭제  
+   - 평점 및 리뷰 작성 가능  
 
----
+2. **뮤지컬 목록**  
+   - JSON 기반 뮤지컬 DB  
+   - 상세 페이지에서 뮤지컬 정보 확인  
 
-### Key Features
+3. **AI 추천**  
+   - 이전 기록을 기반으로 취향 분석  
+   - 임시 AI 로직, OpenAI 연동 가능  
 
-#### Implemented / In Progress
-- User Authentication (Supabase Auth)
-- View Musical Performance Information
-- View Actor Information
-- "Favorite" an actor
-- Display favorited actors' performance schedules on a calendar
-- Automatically calculate actor debut dates and performance anniversaries
-- Personalized notification features
+4. **풀스택 구조**  
+   - Next.js App Router + API Routes  
+   - TypeScript + JSON 데이터  
+   - 컴포넌트 기반 UI  
 
 ---
 
-### Database Schema
-- **users**: User information
-- **actors**: Actor information
-- **musicals**: Musical performance information
-- **schedules**: Performance schedules
-- **favorites**: User-actor "favorite" relationships
-- **calendars**: Personal calendar events
+## ⚡ 기술 스택
+
+- **Frontend / Backend:** Next.js (App Router)  
+- **언어:** TypeScript, JavaScript  
+- **스타일링:** CSS / Tailwind (선택)  
+- **데이터:** JSON 기반 임시 DB  
+- **추천 알고리즘:** AI (추후 OpenAI 연동 가능)  
 
 ---
 
-### Tech Stack
+## 🚀 설치 & 실행
 
-**Frontend**
-- Next.js
-- TypeScript
-- Tailwind CSS
-
-**Backend**
-- Supabase (PostgreSQL)
-- Supabase Auth
-- Java / Spring Boot (planned)
-
-**Deployment**
-- Vercel (Planned)
-
----
-
-### Getting Started
+1. 프로젝트 클론:  
 ```bash
+git clone <repo-url>
+cd MLog
+
+2. 의존성 설치:
 npm install
+
+3. 개발 서버 실행:
 npm run dev
-```
+
+4. 브라우저에서 접속:
+http://localhost:3000
